@@ -33,9 +33,9 @@ public class StudentDriver {
             Student.setCounter(map.lastEntry().getValue().getId() + 1);
 
             map.values().forEach((s) -> {
-                studentsByName.put(s.getName(),s);
-                studentsBySurname.put(s.getSurname(),s);
-                studentsByFathername.put(s.getFatherName(),s);
+                studentsByName.put(s.getName().toLowerCase(),s);
+                studentsBySurname.put(s.getSurname().toLowerCase(),s);
+                studentsByFathername.put(s.getFatherName().toLowerCase(),s);
             });
         }
 
@@ -241,7 +241,10 @@ public class StudentDriver {
 
     public static void printStudent(Student s){
         System.out.printf("|%-5s|%-20s|%-20s|%-20s|%-25s|%-15s|\n",
-                s.getId(), s.getName(), s.getSurname(), s.getFatherName(), s.getEmail(), s.getPhoneNumber());
+                s.getId(), Utilities.capitalizeString(s.getName())
+                , Utilities.capitalizeString(s.getSurname())
+                , Utilities.capitalizeString(s.getFatherName())
+                , s.getEmail(), s.getPhoneNumber());
     }
 
     private int getStudentIdFromUser(){
@@ -267,6 +270,7 @@ public class StudentDriver {
                 System.out.println("-".repeat(50));
                 System.out.println("Please enter the first name of student. ");
                 input = Utilities.promptForName();
+                System.out.println(input);
                 if(input.equals("b")) return;
                 printStudentHeader();
                 studentsByName

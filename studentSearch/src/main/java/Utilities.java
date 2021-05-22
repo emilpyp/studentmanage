@@ -41,7 +41,7 @@ public class Utilities {
 
     public static String promptForEmail(){
         System.out.print("Enter email: ");
-        String regEx = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String regEx = "^[bB]|[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
         String error = "Please enter a valid email: ";
         return promptUser(regEx, error);
     }
@@ -70,5 +70,9 @@ public class Utilities {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.writeValue(f, map);
+    }
+
+    public static String capitalizeString(String str){
+        return str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }
